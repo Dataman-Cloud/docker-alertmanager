@@ -1,0 +1,11 @@
+FROM demoregistry.dataman-inc.com/library/centos7-base:20160907193907
+MAINTAINER pro zpang@dataman-inc.com
+
+ENV ALERTMANAGER_VERSION=0.4.2
+ENV ALERTMANAGER_PKG_NAME=alertmanager-${ALERTMANAGER_VERSION}.linux-amd64.tar.gz
+
+RUN wget -O /tmp/$ALERTMANAGER_PKG_NAME https://github.com/prometheus/prometheus/releases/download/v$ALERTMANAGER_VERSION/$ALERTMANAGER_PKG_NAME && \
+    tar xzvf /tmp/$ALERTMANAGER_PKG_NAME -C /tmp && \
+    mv /tmp/alertmanager /alertmanager
+
+ENTRYPOINT ["/alertmanager"]

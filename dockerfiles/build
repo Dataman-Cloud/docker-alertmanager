@@ -1,0 +1,2 @@
+opts='--no-cache'
+docker build $opts -t library/centos7-alertmanager-0.4.2 /data/tools/alertmanager/
